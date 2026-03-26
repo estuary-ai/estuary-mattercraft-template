@@ -140,6 +140,7 @@ export class EstuaryVoiceConnection extends Behavior<Component> {
 				autoReconnect: true,
 				debug: false,
 				realtimeMemory: true,
+				audioSampleRate: 24000,
 			});
 
 			(window as any).__estuaryClient = this.client;
