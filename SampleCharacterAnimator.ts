@@ -117,6 +117,7 @@ export class SampleCharacterAnimator extends Behavior<Component> {
 
 	private _state: AnimationState = "idle";
 	private _isSpeaking = false;
+	private _audioLevel = 0; // 0..1 from botAudioLevel events
 	private _previousState: AnimationState = "idle";
 	private _speakingBlend = 0; // 0..1, for smooth fade in/out of speak effects
 	private _rotationBlend = 0; // 0..1, slower blend for smooth rotation toward camera
@@ -140,6 +141,7 @@ export class SampleCharacterAnimator extends Behavior<Component> {
 	private _boundOnAudioPlaybackStarted: ((messageId: string) => void) | null = null;
 	private _boundOnAudioPlaybackComplete: ((messageId: string) => void) | null = null;
 	private _boundOnInterrupt: ((data: InterruptData) => void) | null = null;
+	private _boundOnBotAudioLevel: ((level: number) => void) | null = null;
 
 	// Reusable temporaries (avoid per-frame allocations)
 	private _tmpVec = new Vector3();
@@ -212,12 +214,14 @@ export class SampleCharacterAnimator extends Behavior<Component> {
 		this._boundOnAudioPlaybackStarted = () => this._onAudioPlaybackStarted();
 		this._boundOnAudioPlaybackComplete = () => this._onAudioPlaybackComplete();
 		this._boundOnInterrupt = () => this._onInterrupt();
+		this._boundOnBotAudioLevel = (level: number) => { this._audioLevel = level; };
 
 		client.on("characterAction", this._boundOnCharacterAction);
 		client.on("cameraCaptureRequest", this._boundOnCameraCaptureRequest);
 		client.on("audioPlaybackStarted", this._boundOnAudioPlaybackStarted);
 		client.on("audioPlaybackComplete", this._boundOnAudioPlaybackComplete);
 		client.on("interrupt", this._boundOnInterrupt);
+		client.on("botAudioLevel", this._boundOnBotAudioLevel);
 
 		console.log("SampleCharacterAnimator: Subscribed to EstuaryClient events");
 	}
@@ -418,7 +422,11 @@ export class SampleCharacterAnimator extends Behavior<Component> {
 
 		// ── Emissive glow ──
 		if (this._speakingBlend > 0) {
-			const glowValue = (Math.sin(timeSec * this.glowSpeed.value) * 0.5 + 0.5) * this.glowIntensity.value * this._speakingBlend;
+			// Use real audio level when available, sine-wave fallback when not
+			const rawGlow = this._audioLevel > 0
+				? this._audioLevel
+				: (Math.sin(timeSec * this.glowSpeed.value) * 0.5 + 0.5);
+			const glowValue = rawGlow * this.glowIntensity.value * this._speakingBlend;
 			for (const mat of this._materials) {
 				mat.emissiveIntensity = glowValue;
 			}
@@ -468,6 +476,7 @@ export class SampleCharacterAnimator extends Behavior<Component> {
 
 	private _onAudioPlaybackComplete(): void {
 		this._isSpeaking = false;
+		this._audioLevel = 0;
 
 		if (this._state === "swimming_to_gaze") {
 			this._lingerTimer = setTimeout(() => {
@@ -488,6 +497,7 @@ export class SampleCharacterAnimator extends Behavior<Component> {
 
 	private _onInterrupt(): void {
 		this._isSpeaking = false;
+		this._audioLevel = 0;
 		if (this._lingerTimer) {
 			clearTimeout(this._lingerTimer);
 			this._lingerTimer = null;
@@ -533,6 +543,7 @@ export class SampleCharacterAnimator extends Behavior<Component> {
 			if (this._boundOnAudioPlaybackStarted) this._client.off("audioPlaybackStarted", this._boundOnAudioPlaybackStarted);
 			if (this._boundOnAudioPlaybackComplete) this._client.off("audioPlaybackComplete", this._boundOnAudioPlaybackComplete);
 			if (this._boundOnInterrupt) this._client.off("interrupt", this._boundOnInterrupt);
+			if (this._boundOnBotAudioLevel) this._client.off("botAudioLevel", this._boundOnBotAudioLevel);
 			this._client = null;
 		}
 
