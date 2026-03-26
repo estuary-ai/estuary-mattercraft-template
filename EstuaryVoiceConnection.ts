@@ -89,6 +89,12 @@ export class EstuaryVoiceConnection extends Behavior<Component> {
 	 */
 	public isMuted = new Observable<boolean>(false);
 
+	/**
+	 * Real-time bot audio level (0-1), updated ~30fps when speaking
+	 * @zui
+	 */
+	public audioLevel = new Observable<number>(0);
+
 	private client: EstuaryClient | null = null;
 
 	constructor(contextManager: ContextManager, instance: Component, protected constructorProps: ConstructionProps) {
@@ -157,6 +163,7 @@ export class EstuaryVoiceConnection extends Behavior<Component> {
 				this.isConnected.value = false;
 				this.isSpeaking.value = false;
 				this.isListening.value = false;
+				this.audioLevel.value = 0;
 			});
 
 			this.client.on("botResponse", (response) => {
@@ -166,9 +173,12 @@ export class EstuaryVoiceConnection extends Behavior<Component> {
 				}
 			});
 
-			this.client.on("botVoice", (voice) => {
-				// Audio chunk received - automatically played by the SDK
+			this.client.on("audioPlaybackStarted", (messageId: string) => {
 				this.isSpeaking.value = true;
+			});
+
+			this.client.on("botAudioLevel", (level: number) => {
+				this.audioLevel.value = level;
 			});
 
 			this.client.on("sttResponse", (stt) => {
@@ -183,6 +193,7 @@ export class EstuaryVoiceConnection extends Behavior<Component> {
 			this.client.on("interrupt", (data) => {
 				console.log("Estuary: Interrupted", data);
 				this.isSpeaking.value = false;
+				this.audioLevel.value = 0;
 			});
 
 			this.client.on("cameraCaptureRequest", (request) => {
@@ -196,6 +207,7 @@ export class EstuaryVoiceConnection extends Behavior<Component> {
 
 			this.client.on("audioPlaybackComplete", (messageId: string) => {
 				this.isSpeaking.value = false;
+				this.audioLevel.value = 0;
 				console.log("Estuary: Audio playback complete", messageId);
 			});
 
