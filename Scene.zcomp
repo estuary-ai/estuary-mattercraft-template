@@ -1,0 +1,572 @@
+{
+	"animation": {
+		"clips": {
+			"10cd283c4ce54c8893543c77a013bbcf": {
+				"id": "10cd283c4ce54c8893543c77a013bbcf",
+				"length": 0,
+				"lengthType": "auto",
+				"name": "Visible",
+				"order": "a2",
+				"scriptName": "Visible",
+				"tracks": {
+				},
+				"type": "state"
+			},
+			"b474239eb82f41b3bb7aa5f5ab7382fe": {
+				"id": "b474239eb82f41b3bb7aa5f5ab7382fe",
+				"length": 0,
+				"lengthType": "auto",
+				"name": "Hidden",
+				"order": "a3",
+				"scriptName": "Hidden",
+				"tracks": {
+				},
+				"type": "state"
+			},
+			"b7cd899576524ad0842f7ac8392a84a9": {
+				"id": "b7cd899576524ad0842f7ac8392a84a9",
+				"length": 0,
+				"lengthType": "auto",
+				"name": "Placement",
+				"order": "a6",
+				"scriptName": "Placement",
+				"tracks": {
+				},
+				"type": "state"
+			},
+			"e22b1377ce1b430db30ee1afdd49dbc0": {
+				"id": "e22b1377ce1b430db30ee1afdd49dbc0",
+				"length": 0,
+				"lengthType": "auto",
+				"name": "Tracking",
+				"order": "a5",
+				"scriptName": "Tracking",
+				"tracks": {
+				},
+				"type": "state"
+			},
+			"f4a001808ae44053a967b27b17fa4b95": {
+				"defaultFadeParameters": {
+				},
+				"id": "f4a001808ae44053a967b27b17fa4b95",
+				"length": 3995,
+				"lengthType": "manual",
+				"name": "Initializing",
+				"order": "a7",
+				"scriptName": "Initializing",
+				"tracks": {
+				},
+				"type": "timeline"
+			}
+		},
+		"curves": {
+		},
+		"layers": {
+		}
+	},
+	"behaviors": {
+		"23a0093e086a47b0b31edc05a01beda8-0": {
+			"id": "23a0093e086a47b0b31edc05a01beda8-0",
+			"label": "EstuaryVoiceConnection",
+			"parent": {
+				"id": "60ca8ba9c40a446bbb24a9efd9d9cb21",
+				"order": "a0"
+			},
+			"type": "./EstuaryVoiceConnection#EstuaryVoiceConnection"
+		},
+		"d8f2a7b1c3e54d6f9a0b1c2d3e4f5a6b-0": {
+			"id": "d8f2a7b1c3e54d6f9a0b1c2d3e4f5a6b-0",
+			"label": "SampleCharacterAnimator",
+			"parent": {
+				"id": "60ca8ba9c40a446bbb24a9efd9d9cb21",
+				"order": "a0"
+			},
+			"type": "./SampleCharacterAnimator#SampleCharacterAnimator"
+		}
+	},
+	"constructorProps": {
+	},
+	"entitiesByLabel": {
+		"Axiom Wisp.glb": {
+			"60ca8ba9c40a446bbb24a9efd9d9cb21": true
+		},
+		"CameraEnvironmentMap": {
+			"8aceca5f56f54ae298054c8773fa5d2e": true
+		},
+		"DefaultCookieConsent": {
+			"0ba8e27369df45ca897731dcb1e39bcf": true
+		},
+		"DefaultLoader": {
+			"52148d8eafe3426085e700e049662c07": true
+		},
+		"Defaults": {
+			"7b6fb4d895774174b5d151eec86b704c": true
+		},
+		"DirectionalLight": {
+			"857f9901b65b42c89a3ff04470d70738": true
+		},
+		"Group": {
+			"root": true
+		},
+		"ShadowPlane": {
+			"26855c66e5484b449401ca65edab4860": true
+		},
+		"UserPlacementAnchorGroup": {
+			"9d15f2ec62184b1d97dafac07eb9b52b": true
+		},
+		"WorldTracker": {
+			"43661c8d3ef04ff19efbafeb72bb229b": true
+		},
+		"WorldTrackingUI": {
+			"73b9420a21f742ec908c3abf9df3f40a": true
+		},
+		"ZapparCamera": {
+			"d056c264c3d345908a1345aeb612ed9d": true
+		}
+	},
+	"entitiesByScriptName": {
+		"Axiom_Wisp_glb": {
+			"60ca8ba9c40a446bbb24a9efd9d9cb21": true
+		},
+		"CameraEnvironmentMap": {
+			"8aceca5f56f54ae298054c8773fa5d2e": true
+		},
+		"DefaultCookieConsent": {
+			"0ba8e27369df45ca897731dcb1e39bcf": true
+		},
+		"DefaultLoader": {
+			"52148d8eafe3426085e700e049662c07": true
+		},
+		"Defaults": {
+			"7b6fb4d895774174b5d151eec86b704c": true
+		},
+		"DirectionalLight": {
+			"857f9901b65b42c89a3ff04470d70738": true
+		},
+		"ShadowPlane": {
+			"26855c66e5484b449401ca65edab4860": true
+		},
+		"UserPlacementAnchorGroup": {
+			"9d15f2ec62184b1d97dafac07eb9b52b": true
+		},
+		"WorldTracker": {
+			"43661c8d3ef04ff19efbafeb72bb229b": true
+		},
+		"WorldTrackingUI": {
+			"73b9420a21f742ec908c3abf9df3f40a": true
+		},
+		"ZapparCamera": {
+			"d056c264c3d345908a1345aeb612ed9d": true
+		}
+	},
+	"entityConstructorProps": {
+		"0ba8e27369df45ca897731dcb1e39bcf": {
+		},
+		"23a0093e086a47b0b31edc05a01beda8-0": {
+		},
+		"26855c66e5484b449401ca65edab4860": {
+		},
+		"43661c8d3ef04ff19efbafeb72bb229b": {
+		},
+		"52148d8eafe3426085e700e049662c07": {
+		},
+		"60ca8ba9c40a446bbb24a9efd9d9cb21": {
+			"source": "file://./3D Models/Axiom Wisp.glb"
+		},
+		"73b9420a21f742ec908c3abf9df3f40a": {
+		},
+		"7b6fb4d895774174b5d151eec86b704c": {
+		},
+		"857f9901b65b42c89a3ff04470d70738": {
+		},
+		"8aceca5f56f54ae298054c8773fa5d2e": {
+		},
+		"9d15f2ec62184b1d97dafac07eb9b52b": {
+		},
+		"d056c264c3d345908a1345aeb612ed9d": {
+			"activateAtStart": true
+		},
+		"d8f2a7b1c3e54d6f9a0b1c2d3e4f5a6b-0": {
+		}
+	},
+	"entityPropOverrides": {
+		"componentprop:prop:root:position": {
+			"entityID": "root",
+			"entityPropIsConstructor": false,
+			"entityPropPath": [
+				"position"
+			],
+			"id": "componentprop:prop:root:position",
+			"isConstructorProp": false,
+			"propName": "position",
+			"type": "componentprop"
+		},
+		"componentprop:prop:root:rotation": {
+			"entityID": "root",
+			"entityPropIsConstructor": false,
+			"entityPropPath": [
+				"rotation"
+			],
+			"id": "componentprop:prop:root:rotation",
+			"isConstructorProp": false,
+			"propName": "rotation",
+			"type": "componentprop"
+		},
+		"componentprop:prop:root:scale": {
+			"entityID": "root",
+			"entityPropIsConstructor": false,
+			"entityPropPath": [
+				"scale"
+			],
+			"id": "componentprop:prop:root:scale",
+			"isConstructorProp": false,
+			"propName": "scale",
+			"type": "componentprop"
+		},
+		"componentprop:prop:root:visible": {
+			"entityID": "root",
+			"entityPropIsConstructor": false,
+			"entityPropPath": [
+				"visible"
+			],
+			"id": "componentprop:prop:root:visible",
+			"isConstructorProp": false,
+			"propName": "visible",
+			"type": "componentprop"
+		}
+	},
+	"entityProps": {
+		"0ba8e27369df45ca897731dcb1e39bcf": {
+		},
+		"23a0093e086a47b0b31edc05a01beda8-0": {
+			"apiKey": "",
+			"characterId": "",
+			"playerId": "player-1"
+		},
+		"26855c66e5484b449401ca65edab4860": {
+			"position": [
+				0,
+				0,
+				0
+			],
+			"scale": [
+				1,
+				1.0130759468164008,
+				1
+			]
+		},
+		"43661c8d3ef04ff19efbafeb72bb229b": {
+		},
+		"52148d8eafe3426085e700e049662c07": {
+		},
+		"60ca8ba9c40a446bbb24a9efd9d9cb21": {
+			"position": [
+				0,
+				1,
+				0
+			],
+			"scale": [
+				0.25,
+				0.25,
+				0.25
+			]
+		},
+		"73b9420a21f742ec908c3abf9df3f40a": {
+			"preview": "tracking"
+		},
+		"7b6fb4d895774174b5d151eec86b704c": {
+		},
+		"857f9901b65b42c89a3ff04470d70738": {
+			"castShadow": true,
+			"position": [
+				0,
+				3.822578351542651,
+				0
+			]
+		},
+		"8aceca5f56f54ae298054c8773fa5d2e": {
+		},
+		"9d15f2ec62184b1d97dafac07eb9b52b": {
+			"restartPlacementMode": "place"
+		},
+		"d056c264c3d345908a1345aeb612ed9d": {
+		},
+		"d8f2a7b1c3e54d6f9a0b1c2d3e4f5a6b-0": {
+		},
+		"root": {
+			"position": [
+				-1.7761028621592283,
+				0,
+				0
+			]
+		}
+	},
+	"id": "5d4513e843574c04847bf1474912090f",
+	"nodes": {
+		"0ba8e27369df45ca897731dcb1e39bcf": {
+			"id": "0ba8e27369df45ca897731dcb1e39bcf",
+			"label": "DefaultCookieConsent",
+			"parent": {
+				"id": "7b6fb4d895774174b5d151eec86b704c",
+				"order": "a4"
+			},
+			"scriptName": "DefaultCookieConsent",
+			"type": "@zcomponent/core/lib/components/DefaultCookieConsent#DefaultCookieConsent"
+		},
+		"26855c66e5484b449401ca65edab4860": {
+			"id": "26855c66e5484b449401ca65edab4860",
+			"label": "ShadowPlane",
+			"locked": true,
+			"parent": {
+				"id": "9d15f2ec62184b1d97dafac07eb9b52b",
+				"order": "Zy"
+			},
+			"scriptName": "ShadowPlane",
+			"type": "@zcomponent/three/lib/components/meshes/ShadowPlane#ShadowPlane"
+		},
+		"43661c8d3ef04ff19efbafeb72bb229b": {
+			"id": "43661c8d3ef04ff19efbafeb72bb229b",
+			"label": "WorldTracker",
+			"parent": {
+				"id": "root",
+				"order": "a1"
+			},
+			"scriptName": "WorldTracker",
+			"type": "@zcomponent/zappar-three/lib/components/trackers/WorldTracker#WorldTracker"
+		},
+		"52148d8eafe3426085e700e049662c07": {
+			"id": "52148d8eafe3426085e700e049662c07",
+			"label": "DefaultLoader",
+			"parent": {
+				"id": "7b6fb4d895774174b5d151eec86b704c",
+				"order": "Zp"
+			},
+			"scriptName": "DefaultLoader",
+			"type": "@zcomponent/core/lib/components/DefaultLoader#DefaultLoader"
+		},
+		"60ca8ba9c40a446bbb24a9efd9d9cb21": {
+			"id": "60ca8ba9c40a446bbb24a9efd9d9cb21",
+			"label": "Axiom Wisp.glb",
+			"parent": {
+				"id": "9d15f2ec62184b1d97dafac07eb9b52b",
+				"order": "Zw"
+			},
+			"scriptName": "Axiom_Wisp_glb",
+			"type": "@zcomponent/three/lib/components/models/GLTF#GLTF"
+		},
+		"73b9420a21f742ec908c3abf9df3f40a": {
+			"id": "73b9420a21f742ec908c3abf9df3f40a",
+			"label": "WorldTrackingUI",
+			"parent": {
+				"id": "43661c8d3ef04ff19efbafeb72bb229b",
+				"order": "a1"
+			},
+			"scriptName": "WorldTrackingUI",
+			"type": "@zcomponent/zappar-three/lib/components/WorldTrackingUI#WorldTrackingUI"
+		},
+		"7b6fb4d895774174b5d151eec86b704c": {
+			"id": "7b6fb4d895774174b5d151eec86b704c",
+			"label": "Defaults",
+			"parent": {
+				"id": "root",
+				"order": "a0"
+			},
+			"scriptName": "Defaults",
+			"type": "@zcomponent/three/lib/components/Group#Group"
+		},
+		"857f9901b65b42c89a3ff04470d70738": {
+			"id": "857f9901b65b42c89a3ff04470d70738",
+			"label": "DirectionalLight",
+			"parent": {
+				"id": "9d15f2ec62184b1d97dafac07eb9b52b",
+				"order": "Zz"
+			},
+			"scriptName": "DirectionalLight",
+			"type": "@zcomponent/three/lib/components/lights/DirectionalLight#DirectionalLight"
+		},
+		"8aceca5f56f54ae298054c8773fa5d2e": {
+			"id": "8aceca5f56f54ae298054c8773fa5d2e",
+			"label": "CameraEnvironmentMap",
+			"parent": {
+				"id": "root",
+				"order": "a5"
+			},
+			"scriptName": "CameraEnvironmentMap",
+			"type": "@zcomponent/zappar-three/lib/components/environments/CameraEnvironmentMap#CameraEnvironmentMap"
+		},
+		"9d15f2ec62184b1d97dafac07eb9b52b": {
+			"id": "9d15f2ec62184b1d97dafac07eb9b52b",
+			"label": "UserPlacementAnchorGroup",
+			"parent": {
+				"id": "43661c8d3ef04ff19efbafeb72bb229b",
+				"order": "Zz"
+			},
+			"scriptName": "UserPlacementAnchorGroup",
+			"type": "@zcomponent/zappar-three/lib/components/anchorgroups/UserPlacementAnchorGroup#UserPlacementAnchorGroup"
+		},
+		"d056c264c3d345908a1345aeb612ed9d": {
+			"id": "d056c264c3d345908a1345aeb612ed9d",
+			"label": "ZapparCamera",
+			"parent": {
+				"id": "root",
+				"order": "ZW"
+			},
+			"scriptName": "ZapparCamera",
+			"type": "@zcomponent/zappar-three/lib/components/cameras/Camera#ZapparCamera"
+		},
+		"root": {
+			"id": "root",
+			"label": "Group",
+			"type": "@zcomponent/three/lib/components/Group#Group"
+		}
+	},
+	"preview": "@zcomponent/three/lib/preview#default",
+	"propEntityOverrides": {
+		"position": {
+			"root": {
+				"position": true
+			}
+		}
+	},
+	"props": {
+		"position": {
+			"comments": [
+				"The position, in 3D space, of this node relative to its parent. The three elements of the array correspond to the `x`, `y`, and `z` components of position."
+			],
+			"default": [
+				0,
+				0,
+				0
+			],
+			"group": "Transform",
+			"groupPriority": 10,
+			"name": "position",
+			"type": {
+				"children": [
+					{
+						"comments": [
+						],
+						"name": "number"
+					},
+					{
+						"comments": [
+						],
+						"name": "number"
+					},
+					{
+						"comments": [
+						],
+						"name": "number"
+					}
+				],
+				"comments": [
+				],
+				"isObservable": true,
+				"name": "tuple",
+				"names": [
+					"x",
+					"y",
+					"z"
+				]
+			}
+		},
+		"rotation": {
+			"comments": [
+				"The rotation, in three dimensions, of this node relative to its parent. The three elements of the array correspond to Euler angles - yaw, pitch and roll."
+			],
+			"default": [
+				0,
+				0,
+				0
+			],
+			"group": "Transform",
+			"groupPriority": 10,
+			"name": "rotation",
+			"type": {
+				"children": [
+					{
+						"comments": [
+						],
+						"name": "number"
+					},
+					{
+						"comments": [
+						],
+						"name": "number"
+					},
+					{
+						"comments": [
+						],
+						"name": "number"
+					}
+				],
+				"comments": [
+				],
+				"isObservable": true,
+				"name": "tuple",
+				"names": [
+					"x",
+					"y",
+					"z"
+				]
+			}
+		},
+		"scale": {
+			"comments": [
+				"The scale, in three dimensions, of this node relative to its parent. The three elements of the array correspond to scales in the the `x`, `y`, and `z` axis."
+			],
+			"default": [
+				1,
+				1,
+				1
+			],
+			"group": "Transform",
+			"groupPriority": 10,
+			"name": "scale",
+			"type": {
+				"children": [
+					{
+						"comments": [
+						],
+						"name": "number"
+					},
+					{
+						"comments": [
+						],
+						"name": "number"
+					},
+					{
+						"comments": [
+						],
+						"name": "number"
+					}
+				],
+				"comments": [
+				],
+				"isObservable": true,
+				"name": "tuple",
+				"names": [
+					"x",
+					"y",
+					"z"
+				]
+			}
+		},
+		"visible": {
+			"comments": [
+				"Determines if this object and its children are rendered to the screen."
+			],
+			"default": true,
+			"group": "Appearance",
+			"groupPriority": 11,
+			"name": "visible",
+			"type": {
+				"comments": [
+				],
+				"isObservable": true,
+				"name": "boolean"
+			}
+		}
+	},
+	"root": "root"
+}
