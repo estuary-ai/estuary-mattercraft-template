@@ -19,7 +19,7 @@ interface ConstructionProps {
 }
 
 /**
- * @zbehavior 
+ * @zbehavior
  * Manages voice conversation connection to Estuary AI
  **/
 export class EstuaryVoiceConnection extends Behavior<Component> {
@@ -48,6 +48,8 @@ export class EstuaryVoiceConnection extends Behavior<Component> {
 
 	/**
 	 * The server URL
+	 * @zui
+	 * @zdefault "https://api.estuary-ai.com"
 	 */
 	public serverUrl = new Observable<string>("https://api.estuary-ai.com");
 
@@ -88,12 +90,6 @@ export class EstuaryVoiceConnection extends Behavior<Component> {
 	 * @zui
 	 */
 	public isMuted = new Observable<boolean>(false);
-
-	/**
-	 * Real-time bot audio level (0-1), updated ~30fps when speaking
-	 * @zui
-	 */
-	public audioLevel = new Observable<number>(0);
 
 	private client: EstuaryClient | null = null;
 
@@ -163,7 +159,6 @@ export class EstuaryVoiceConnection extends Behavior<Component> {
 				this.isConnected.value = false;
 				this.isSpeaking.value = false;
 				this.isListening.value = false;
-				this.audioLevel.value = 0;
 			});
 
 			this.client.on("botResponse", (response) => {
@@ -173,12 +168,8 @@ export class EstuaryVoiceConnection extends Behavior<Component> {
 				}
 			});
 
-			this.client.on("audioPlaybackStarted", (messageId: string) => {
+			this.client.on("botVoice", (voice) => {
 				this.isSpeaking.value = true;
-			});
-
-			this.client.on("botAudioLevel", (level: number) => {
-				this.audioLevel.value = level;
 			});
 
 			this.client.on("sttResponse", (stt) => {
@@ -193,7 +184,6 @@ export class EstuaryVoiceConnection extends Behavior<Component> {
 			this.client.on("interrupt", (data) => {
 				console.log("Estuary: Interrupted", data);
 				this.isSpeaking.value = false;
-				this.audioLevel.value = 0;
 			});
 
 			this.client.on("cameraCaptureRequest", (request) => {
@@ -207,7 +197,6 @@ export class EstuaryVoiceConnection extends Behavior<Component> {
 
 			this.client.on("audioPlaybackComplete", (messageId: string) => {
 				this.isSpeaking.value = false;
-				this.audioLevel.value = 0;
 				console.log("Estuary: Audio playback complete", messageId);
 			});
 
@@ -350,7 +339,6 @@ export class EstuaryVoiceConnection extends Behavior<Component> {
 	}
 
 	dispose() {
-		// Clean up the connection
 		if (this.client) {
 			this.client.disconnect();
 			this.client = null;
