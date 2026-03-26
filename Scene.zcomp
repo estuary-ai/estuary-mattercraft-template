@@ -69,7 +69,7 @@
 			"id": "23a0093e086a47b0b31edc05a01beda8-0",
 			"label": "EstuaryVoiceConnection",
 			"parent": {
-				"id": "60ca8ba9c40a446bbb24a9efd9d9cb21",
+				"id": "root",
 				"order": "a0"
 			},
 			"type": "./EstuaryVoiceConnection#EstuaryVoiceConnection"
@@ -241,7 +241,7 @@
 		"23a0093e086a47b0b31edc05a01beda8-0": {
 			"apiKey": "",
 			"characterId": "",
-			"playerId": "player-1"
+			"playerId": "player-42"
 		},
 		"26855c66e5484b449401ca65edab4860": {
 			"position": [
