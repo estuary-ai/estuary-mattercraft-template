@@ -13,7 +13,7 @@
     "@zcomponent/html": "1.x",
     "@zcomponent/three": "1.x",
     "@zcomponent/zappar-three": "4.x",
-    "@estuary-ai/sdk": "^0.1.27"
+    "@estuary-ai/sdk": "^0.1.30"
   },
   "devDependencies": {
     "@types/three": "0.150.1",
