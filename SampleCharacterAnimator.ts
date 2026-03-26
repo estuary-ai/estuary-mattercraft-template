@@ -175,7 +175,7 @@ export class SampleCharacterAnimator extends Behavior<Component> {
 
 	/** Access the underlying Three.js Object3D via Mattercraft's .element property */
 	private get _obj(): Object3D {
-		return (this.instance as any).element as Object3D;
+		return (this.instance as EstuaryClient | undefined).element as Object3D;
 	}
 
 	private _initialize(): void {
@@ -193,7 +193,7 @@ export class SampleCharacterAnimator extends Behavior<Component> {
 
 		// Poll for the EstuaryClient exposed on window by EstuaryVoiceConnection
 		this._clientPollInterval = setInterval(() => {
-			const client = (window as any).__estuaryClient as EstuaryClient | undefined;
+			const client = (window as EstuaryClient | undefined).__estuaryClient as EstuaryClient | undefined;
 			if (client) {
 				clearInterval(this._clientPollInterval!);
 				this._clientPollInterval = null;
@@ -240,7 +240,7 @@ export class SampleCharacterAnimator extends Behavior<Component> {
 		// Find the camera in the scene graph
 		let camera: Object3D | null = null;
 		root.traverse((child) => {
-			if ((child as any).isCamera && !camera) {
+			if ((child as EstuaryClient | undefined).isCamera && !camera) {
 				camera = child;
 			}
 		});
@@ -253,7 +253,7 @@ export class SampleCharacterAnimator extends Behavior<Component> {
 		this._materials = [];
 
 		obj.traverse((child) => {
-			if ((child as any).isMesh) {
+			if ((child as EstuaryClient | undefined).isMesh) {
 				const mesh = child as Mesh;
 				const mats = Array.isArray(mesh.material) ? mesh.material : [mesh.material];
 				for (const mat of mats) {
