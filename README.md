@@ -24,15 +24,14 @@ A [Mattercraft](https://docs.zap.works/mattercraft/) template for building voice
 
 ```
 estuary-mattercraft-template/
-├── index.ts                       Entry point — initializes Mattercraft scene
-├── index.html                     HTML shell with launch button and mute control
-├── Scene.zcomp                    Mattercraft scene graph (JSON)
-├── Scene.zcomp.d.ts               TypeScript declarations for scene
-├── EstuaryVoiceConnection.ts      Behavior: Estuary voice connection
-├── SampleCharacterAnimator.ts     Behavior: example character animations
-├── 3D Model/
-│   └── Axiom Wisp.glb             Sample 3D character (replace with your own)
-└── package.json                   Dependencies (npm-only)
+├── index.ts                    # Entry point
+├── index.html                  # HTML shell (launch + mute)
+├── Scene.zcomp                 # Scene graph (JSON)
+├── Scene.zcomp.d.ts            # Scene type declarations
+├── EstuaryVoiceConnection.ts   # Voice connection behavior
+├── SampleCharacterAnimator.ts  # Character animation behavior
+└── 3D Models/
+    └── Axiom Wisp.glb          # Sample 3D character
 ```
 
 ## Behaviors
