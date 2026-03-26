@@ -2,6 +2,14 @@
 
 A [Mattercraft](https://docs.zap.works/mattercraft/) template for building voice-enabled WebAR characters powered by [Estuary](https://estuary-ai.com). Drop in your own 3D model, set your API key and character ID in the Properties panel, and publish.
 
+**Try the live demo**
+
+Scan with your phone to launch the WebAR experience
+
+<p align="center">
+  <img src="estuary-mattercraft-template-qr.svg" alt="Scan to launch demo" width="200" />
+</p>
+
 ## Prerequisites
 
 - [Mattercraft](https://zap.works/mattercraft/) editor 
@@ -13,7 +21,7 @@ A [Mattercraft](https://docs.zap.works/mattercraft/) template for building voice
 ## Quick Start
 
 1. Open this project in Mattercraft
-2. Select the **EstuaryVoiceConnection** behavior on the `Axiom Wisp.glb` node
+2. Select the **EstuaryVoiceConnection** behavior on the **root Group** node
 3. In the Behavior panel, set your `apiKey` and `characterId`
 4. Click **Preview** to test the experience, you should be able to start speaking to your character
 5. Replace `3D Models/Axiom Wisp.glb` with your own character model
@@ -38,7 +46,7 @@ estuary-mattercraft-template/
 
 ### EstuaryVoiceConnection
 
-The core behavior. Manages the Estuary SDK connection, voice pipeline, microphone mute, and camera capture. Attach it to the character node in your scene.
+The core behavior. Manages the Estuary SDK connection, voice pipeline, microphone mute, and camera capture.
 
 **Properties panel settings:**
 
