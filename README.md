@@ -80,6 +80,8 @@ An example behavior demonstrating how to animate a 3D model in response to Estua
 
 All animation parameters (amplitude, speed, distances) are tunable via the Properties panel.
 
+**Required character actions:** The sample animator listens for two character actions: `follow_user` and `stop_following_user`. You must add these actions to your character in the [Estuary Configurator](https://app.estuary-ai.com) for them to work.
+
 ## Customization
 
 ### Using Your Own 3D Model
@@ -147,7 +149,7 @@ const interval = setInterval(() => {
 ## Features
 
 - **Voice conversation** — real-time speech-to-text and text-to-speech via LiveKit/WebSocket
-- **Vision (VLM)** — character can request and process camera images
+- **Vision (VLM)** — character can request and process camera images. Try asking your character what it thinks about what you're looking at!
 - **Persistent memory** — character can remember conversations across sessions, configurable in Estuary Configurator
 - **Mute control** — built-in microphone mute button in the HTML overlay
 - **Auto-reconnect** — handles connection drops gracefully
