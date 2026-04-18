@@ -4,7 +4,7 @@ A [Mattercraft](https://docs.zap.works/mattercraft/) template for building voice
 
 **Try the live demo**
 
-Scan with your phone to launch the WebAR experience
+Scan with your phone to launch the [WebAR experience](https://webxr.run/bNalxng97ndnM)
 
 <p align="center">
   <img src="estuary-mattercraft-template-qr.svg" alt="Scan to launch demo" width="200" />
