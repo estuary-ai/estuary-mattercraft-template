@@ -82,6 +82,26 @@
 				"order": "a0"
 			},
 			"type": "./SampleCharacterAnimator#SampleCharacterAnimator"
+		},
+		"e67b495e181e4d94bbabe56340c6d54f": {
+			"id": "e67b495e181e4d94bbabe56340c6d54f",
+			"label": "ExampleSendText",
+			"parent": {
+				"id": "60ca8ba9c40a446bbb24a9efd9d9cb21",
+				"order": "a2",
+				"scriptName": "ExampleSendText"
+			},
+			"type": "./ExampleSendText#ExampleSendText"
+		},
+		"ff57e7e16e2742d5b7eceedebe83dc12": {
+			"id": "ff57e7e16e2742d5b7eceedebe83dc12",
+			"label": "ExampleSayLine",
+			"parent": {
+				"id": "60ca8ba9c40a446bbb24a9efd9d9cb21",
+				"order": "a1",
+				"scriptName": "ExampleSayLine"
+			},
+			"type": "./ExampleSayLine#ExampleSayLine"
 		}
 	},
 	"constructorProps": {
@@ -187,6 +207,10 @@
 			"activateAtStart": true
 		},
 		"d8f2a7b1c3e54d6f9a0b1c2d3e4f5a6b-0": {
+		},
+		"e67b495e181e4d94bbabe56340c6d54f": {
+		},
+		"ff57e7e16e2742d5b7eceedebe83dc12": {
 		}
 	},
 	"entityPropOverrides": {
@@ -292,6 +316,14 @@
 		"d056c264c3d345908a1345aeb612ed9d": {
 		},
 		"d8f2a7b1c3e54d6f9a0b1c2d3e4f5a6b-0": {
+		},
+		"e67b495e181e4d94bbabe56340c6d54f": {
+			"autoSendOnConnect": false,
+			"enabled": false
+		},
+		"ff57e7e16e2742d5b7eceedebe83dc12": {
+			"autoSpeakOnConnect": false,
+			"enabled": false
 		},
 		"root": {
 			"position": [

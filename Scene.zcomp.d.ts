@@ -2,16 +2,18 @@ import { ZComponent, ContextManager, Observable, Animation, Layer, LayerClip, Ev
 
 import { GLTF as GLTF_0 } from "@zcomponent/three/lib/components/models/GLTF";
 import { SampleCharacterAnimator as SampleCharacterAnimator_1 } from "./SampleCharacterAnimator";
-import { CameraEnvironmentMap as CameraEnvironmentMap_2 } from "@zcomponent/zappar-three/lib/components/environments/CameraEnvironmentMap";
-import { DefaultCookieConsent as DefaultCookieConsent_3 } from "@zcomponent/core/lib/components/DefaultCookieConsent";
-import { DefaultLoader as DefaultLoader_4 } from "@zcomponent/core/lib/components/DefaultLoader";
-import { Group as Group_5 } from "@zcomponent/three/lib/components/Group";
-import { DirectionalLight as DirectionalLight_6 } from "@zcomponent/three/lib/components/lights/DirectionalLight";
-import { ShadowPlane as ShadowPlane_7 } from "@zcomponent/three/lib/components/meshes/ShadowPlane";
-import { UserPlacementAnchorGroup as UserPlacementAnchorGroup_8 } from "@zcomponent/zappar-three/lib/components/anchorgroups/UserPlacementAnchorGroup";
-import { WorldTracker as WorldTracker_9 } from "@zcomponent/zappar-three/lib/components/trackers/WorldTracker";
-import { WorldTrackingUI as WorldTrackingUI_10 } from "@zcomponent/zappar-three/lib/components/WorldTrackingUI";
-import { ZapparCamera as ZapparCamera_11 } from "@zcomponent/zappar-three/lib/components/cameras/Camera";
+import { ExampleSayLine as ExampleSayLine_2 } from "./ExampleSayLine";
+import { ExampleSendText as ExampleSendText_3 } from "./ExampleSendText";
+import { CameraEnvironmentMap as CameraEnvironmentMap_4 } from "@zcomponent/zappar-three/lib/components/environments/CameraEnvironmentMap";
+import { DefaultCookieConsent as DefaultCookieConsent_5 } from "@zcomponent/core/lib/components/DefaultCookieConsent";
+import { DefaultLoader as DefaultLoader_6 } from "@zcomponent/core/lib/components/DefaultLoader";
+import { Group as Group_7 } from "@zcomponent/three/lib/components/Group";
+import { DirectionalLight as DirectionalLight_8 } from "@zcomponent/three/lib/components/lights/DirectionalLight";
+import { ShadowPlane as ShadowPlane_9 } from "@zcomponent/three/lib/components/meshes/ShadowPlane";
+import { UserPlacementAnchorGroup as UserPlacementAnchorGroup_10 } from "@zcomponent/zappar-three/lib/components/anchorgroups/UserPlacementAnchorGroup";
+import { WorldTracker as WorldTracker_11 } from "@zcomponent/zappar-three/lib/components/trackers/WorldTracker";
+import { WorldTrackingUI as WorldTrackingUI_12 } from "@zcomponent/zappar-three/lib/components/WorldTrackingUI";
+import { ZapparCamera as ZapparCamera_13 } from "@zcomponent/zappar-three/lib/components/cameras/Camera";
 
 interface ConstructorProps {
 
@@ -30,54 +32,58 @@ declare class Comp extends ZComponent {
 		Axiom_Wisp_glb: GLTF_0 & {
 			behaviors: {
 				0: SampleCharacterAnimator_1,
+				1: ExampleSayLine_2,
+				ExampleSayLine: ExampleSayLine_2,
+				2: ExampleSendText_3,
+				ExampleSendText: ExampleSendText_3,
 			}
 		},
-		CameraEnvironmentMap: CameraEnvironmentMap_2 & {
+		CameraEnvironmentMap: CameraEnvironmentMap_4 & {
 			behaviors: {
 
 			}
 		},
-		DefaultCookieConsent: DefaultCookieConsent_3 & {
+		DefaultCookieConsent: DefaultCookieConsent_5 & {
 			behaviors: {
 
 			}
 		},
-		DefaultLoader: DefaultLoader_4 & {
+		DefaultLoader: DefaultLoader_6 & {
 			behaviors: {
 
 			}
 		},
-		Defaults: Group_5 & {
+		Defaults: Group_7 & {
 			behaviors: {
 
 			}
 		},
-		DirectionalLight: DirectionalLight_6 & {
+		DirectionalLight: DirectionalLight_8 & {
 			behaviors: {
 
 			}
 		},
-		ShadowPlane: ShadowPlane_7 & {
+		ShadowPlane: ShadowPlane_9 & {
 			behaviors: {
 
 			}
 		},
-		UserPlacementAnchorGroup: UserPlacementAnchorGroup_8 & {
+		UserPlacementAnchorGroup: UserPlacementAnchorGroup_10 & {
 			behaviors: {
 
 			}
 		},
-		WorldTracker: WorldTracker_9 & {
+		WorldTracker: WorldTracker_11 & {
 			behaviors: {
 
 			}
 		},
-		WorldTrackingUI: WorldTrackingUI_10 & {
+		WorldTrackingUI: WorldTrackingUI_12 & {
 			behaviors: {
 
 			}
 		},
-		ZapparCamera: ZapparCamera_11 & {
+		ZapparCamera: ZapparCamera_13 & {
 			behaviors: {
 
 			}
