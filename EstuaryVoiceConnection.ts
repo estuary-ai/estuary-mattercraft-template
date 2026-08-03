@@ -92,6 +92,10 @@ export class EstuaryVoiceConnection extends Behavior<Component> {
 	public isMuted = new Observable<boolean>(false);
 
 	private client: EstuaryClient | null = null;
+	private _voiceStarted = false;
+	// The user has tapped Launch. A LiveKit room bills from the moment of join,
+	// so voice waits for this rather than starting on page load.
+	private _userGestureReceived = false;
 
 	constructor(contextManager: ContextManager, instance: Component, protected constructorProps: ConstructionProps) {
 		super(contextManager, instance);
@@ -106,7 +110,39 @@ export class EstuaryVoiceConnection extends Behavior<Component> {
 		started(this.contextManager).then(() => {
 			this._initializeConnection();
 			this._wireMuteButton();
+			this._wireLaunchButton();
 		});
+	}
+
+	/**
+	 * Voice joins on the Launch tap, never on page load.
+	 *
+	 * A LiveKit room bills per participant connection-minute from the moment
+	 * you join, and muting does not stop that: the room stays joined while
+	 * muted. Joining on page load means every visitor who opens the page and
+	 * leaves without interacting still holds a billed room until the server
+	 * reaps it. Tying the join to a real tap also satisfies the browser, which
+	 * wants a user gesture before granting microphone access.
+	 *
+	 * If your project replaces this Zappar launch button, move this call to
+	 * whatever button starts your experience.
+	 */
+	private _wireLaunchButton() {
+		const btn = document.getElementById("launchButton");
+		if (!btn) return;
+
+		btn.addEventListener("click", () => {
+			void this._onUserGesture();
+		});
+	}
+
+	private async _onUserGesture() {
+		this._userGestureReceived = true;
+		// The tap can land before or after the socket finishes connecting, so
+		// both paths check: whichever happens second starts voice.
+		if (this.autoStartVoice.value && this.isConnected.value) {
+			await this.startVoice();
+		}
 	}
 
 	private _wireMuteButton() {
@@ -150,7 +186,9 @@ export class EstuaryVoiceConnection extends Behavior<Component> {
 				console.log("Estuary: Connected", session);
 				this.isConnected.value = true;
 
-				if (this.autoStartVoice.value) {
+				// Only join if the user already tapped Launch. See
+				// _wireLaunchButton for why voice does not start on page load.
+				if (this.autoStartVoice.value && this._userGestureReceived) {
 					await this.startVoice();
 				}
 			});
@@ -160,6 +198,27 @@ export class EstuaryVoiceConnection extends Behavior<Component> {
 				this.isConnected.value = false;
 				this.isSpeaking.value = false;
 				this.isListening.value = false;
+			});
+
+			// The SDK manages the browser page lifecycle itself (v0.9.0+).
+			// Hiding the page (home button, tab switch, closing an App Clip)
+			// releases voice, so the character stops talking and the room stops
+			// billing, and returning resumes it. These two events let the app
+			// keep its own state honest across those transitions.
+			this.client.on("voiceStopped", () => {
+				this._voiceStarted = false;
+				this.isSpeaking.value = false;
+				this.isListening.value = false;
+			});
+
+			this.client.on("voiceStarted", () => {
+				this._voiceStarted = true;
+				// A resumed session comes back with a fresh, UNMUTED
+				// microphone. Re-apply whatever the user chose before they
+				// left, or they return to a hot mic.
+				if (this.isMuted.value && this.client && !this.client.isMuted) {
+					this.client.toggleMute();
+				}
 			});
 
 			this.client.on("botResponse", (response) => {
@@ -257,6 +316,7 @@ export class EstuaryVoiceConnection extends Behavior<Component> {
 			await this.client.disconnect();
 			(window as any).__estuaryClient = null;
 			this.client = null;
+			this._voiceStarted = false;
 			this.isConnected.value = false;
 		}
 	}
@@ -270,8 +330,17 @@ export class EstuaryVoiceConnection extends Behavior<Component> {
 			return;
 		}
 
+		// Idempotent: a double-tap, or a resume racing the gesture handler,
+		// would otherwise join a second billed participant on top of the live
+		// one.
+		if (this._voiceStarted) {
+			console.log("Estuary: Voice already started, ignoring");
+			return;
+		}
+
 		try {
 			await this.client.startVoice();
+			this._voiceStarted = true;
 			console.log("Estuary: Voice started");
 		} catch (error) {
 			console.error("Failed to start voice:", error);
@@ -288,6 +357,7 @@ export class EstuaryVoiceConnection extends Behavior<Component> {
 		}
 
 		this.client.stopVoice();
+		this._voiceStarted = false;
 		this.isListening.value = false;
 		console.log("Estuary: Voice stopped");
 	}

@@ -57,7 +57,28 @@ The core behavior. Manages the Estuary SDK connection, voice pipeline, microphon
 | `characterId` | Your Estuary character ID | `""` |
 | `apiKey` | Your Estuary API key (`est_...`) | `""` |
 | `playerId` | Unique identifier for the end user | `"player-1"` |
-| `autoStartVoice` | Start voice automatically on connect | `true` |
+| `autoStartVoice` | Join voice when the user taps Launch (not on page load, see below) | `true` |
+
+**Voice joins on the Launch tap, never on page load.** This matters for your bill.
+A LiveKit room charges per participant connection-minute from the moment you
+join, and muting does not stop the meter: the room stays joined while muted. If
+you join on page load, every visitor who opens the page and wanders off is still
+holding a paid room until the server reaps it. Tying the join to a real tap also
+satisfies the browser, which wants a user gesture before it will grant
+microphone access.
+
+The template hangs this on the Zappar `launchButton` because that tap already
+exists. **If you replace that button, move the `_wireLaunchButton` call in
+`EstuaryVoiceConnection.ts` to whatever starts your experience.** Tapping before
+the connection is ready is handled: the tap is remembered and voice joins as
+soon as the socket is up.
+
+**Backgrounding is handled for you.** From SDK v0.9.0 the client manages the
+page lifecycle: hiding the page releases voice, so the character stops talking
+and the room stops billing, and returning resumes it. One thing you must handle
+yourself is mute. A resumed session comes back with a fresh, **unmuted**
+microphone, so re-apply the user's choice in a `voiceStarted` handler. This
+template already does, and it is worth keeping if you rewrite this behavior.
 
 **Read-only state** (available to other behaviors):
 
@@ -91,6 +112,12 @@ An example behavior demonstrating how to animate a 3D model in response to Estua
 All animation parameters (amplitude, speed, distances) are tunable via the Properties panel.
 
 **Required character actions:** The sample animator listens for two character actions: `follow_user` and `stop_following_user`. You must add these actions to your character in the [Estuary Configurator](https://app.estuary-ai.com) for them to work.
+
+Any other action you define arrives at the `default` case in `_onCharacterAction`
+and is logged rather than dropped. That log line is the thing to look for when a
+character action appears to do nothing: it means the action reached the browser
+fine and this rig simply has no motion for it, which is a different problem from
+the action never firing at all.
 
 ### ExampleSayLine
 
